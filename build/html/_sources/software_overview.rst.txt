@@ -1,0 +1,52 @@
+Software Overview
+=================
+
+Environment
+-----------
+
+MOMA's internal computer runs Ubuntu 14.04.5 LTS and ROS indigo, which largely 
+gives the system compatibility and stability. 
+
+At the first time to access the internal computer, 
+you are recommended to connect a keyboard, mouse and HDMI monitor to the side shell of MOMA.
+
+There is an account with username *moma* in the computer. The password by default is also moma, 
+which is recommended to change when you get MOMA.
+
+.. _network:
+
+Network
+-------
+
+Now you can change the network setting. It is recommended to connect MOMA with Wi-Fi so that 
+you can still monitor the activities inside MOMA while it is moving around. 
+
+There are three network interfaces on MOMA's computer. Apart from those two (**wlan2 and eth1**) on MOMA's shell, 
+the other one (**eth0**) is used to connect with UR5, where the IP of UR5 Is 10.0.0.250 and the IP of MOMA 
+is 10.0.0.3.
+
+If you want to connect a remote computer to the ROS master running on MOMA, you can 
+config your computer with these commands in terminal:
+
+::
+
+  $ echo export ROS_MASTER_URI=http://IP_OF_MOMA:11311 >> ~/.bashrc
+  $ echo export ROS_HOSTNAME=IP_OF_PC >> ~/.bashrc
+
+
+Upstart service
+---------------
+
+There is a service running right after the internal computer starts up. 
+This service creates a listener to the trigger of this combination on XBOX One controller: 
+**Left Trigger + Right Trigger + Left Bumper + Right Bumper + Guide**. 
+Once the event is occured, this service will launch the drivers of all actuators on MOMA and a 
+teleoperation program to control them.
+
+The service's name is *moma*. To stop or start this service manually, you can use the commands below:
+
+::
+
+  $ sudo service moma stop
+  $ sudo service moma start
+

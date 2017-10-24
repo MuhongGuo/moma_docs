@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hardware Overview &mdash; MOMA  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MOMA  documentation" href="index.html"/>
+        <link rel="next" title="Software Overview" href="software_overview.html"/>
+        <link rel="prev" title="Quick Start" href="quick_start.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MOMA
+          
+
+          
+            
+            <img src="_static/logo_moma.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="document_outline.html">Document Outline (TEMPORARY)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hardware Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mechanical-overview">Mechanical Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#runner">Runner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mobility-layer">Mobility Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#battery-layer">Battery Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lidar-layer">Lidar Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#computing-layer">Computing Layer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lifter">Lifter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arm">Arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dorabot-hand3-pro">Dorabot_hand3_pro</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dimensions-of-dorabot-hand3-pro">Dimensions of Dorabot_hand3_pro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#names-of-jonits-on-each-finger">Names of jonits on each finger:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#features-and-benefits">Features and Benefits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specifications">Specifications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#electrical-overview">Electrical Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Mobility Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Battery Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computer-layer">Computer Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Lifter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hand">Hand</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#communication-overview">Communication Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#communication-structure">Communication Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-interfaces-ros-node">Software Interfaces – ROS node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-interfaces-canpackagedistributor">Hardware Interfaces – CANPackageDistributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-detailed-view">More Detailed View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sensor-overview">Sensor Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tof-ranging-sensor">TOF ranging Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bumper">Bumper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encoder">Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lidar">Lidar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kinect-v2">Kinect V2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#realsense-sr300">Realsense SR300</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proximity-sensor">Proximity Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angle-sensor">Angle Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microphone">Microphone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_overview.html">Software Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="care_protection.html">Care and Protection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Turtorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigation.html">Navigation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specification.html">Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MOMA</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Hardware Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/hardware_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hardware-overview">
+<h1>Hardware Overview<a class="headerlink" href="#hardware-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mechanical-overview">
+<h2>Mechanical Overview<a class="headerlink" href="#mechanical-overview" title="Permalink to this headline">¶</a></h2>
+<p>The mechanical structure of MOMA in general is shown as the picture below.</p>
+<a class="reference internal image-reference" href="_images/moma_mechanical_structure.jpg"><img alt="MOMA mechanical structure" class="align-center" src="_images/moma_mechanical_structure.jpg" style="width: 375.0px; height: 500.0px;" /></a>
+<div class="section" id="runner">
+<h3>Runner<a class="headerlink" href="#runner" title="Permalink to this headline">¶</a></h3>
+<p>Runner contains four layers: mobility layer, battery layer, lidar layer and computing layer.</p>
+<div class="section" id="mobility-layer">
+<h4>Mobility Layer<a class="headerlink" href="#mobility-layer" title="Permalink to this headline">¶</a></h4>
+<p>Mobility Layer provides three-DOFs (degrees of freedom)  mobility for MOMA using four mecanum wheels which allow it to move on plane surfaces.
+There are four infrared TOF (Time Of Flying) sensors,
+one on each of the four sides of Mobility Layer,
+to detect the distance between MOMA and nearby obstacles.
+The base board has a bumper around its outer edge.
+In case MOMA runs into an obstacle,
+it will cut the power off to protect it against possible damage.</p>
+</div>
+<div class="section" id="battery-layer">
+<h4>Battery Layer<a class="headerlink" href="#battery-layer" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Function</li>
+</ul>
+<p>Battery Layer provides power to all systems of MOMA.
+It houses two batteries that are rechargeable and removable.</p>
+<ul class="simple">
+<li>Removing the Batteries</li>
+</ul>
+<p>When removing the battery layer for maintenance:
+(1)- Unlock the two protruding pin-screws beside the battery box (pull the screw out and turn it 90-degree clockwise);
+(2)- Disconnect all cables from the battery;
+(3)- Pull the battery box out using the handle attached to its front side.
+Follow the steps reversely when sliding into the battery layer.</p>
+</div>
+<div class="section" id="lidar-layer">
+<h4>Lidar Layer<a class="headerlink" href="#lidar-layer" title="Permalink to this headline">¶</a></h4>
+<p>Lidar Layer provides MOMA a global but planar view around the robot itself.
+It uses two 240-degree lidars symmetrically installed on the lidar board.
+The overlapping fields of view of the two lidars ensure 360 degree planar
+view around the robot with no blind spots outside the footprint of MOMA.</p>
+</div>
+<div class="section" id="computing-layer">
+<h4>Computing Layer<a class="headerlink" href="#computing-layer" title="Permalink to this headline">¶</a></h4>
+<p>Computing Layer includes almost all of the electronic components of MOMA,
+such as the motherboard of the on-board computer and the control cards of the robot arm.
+Computing Layer acts as the brain of MOMA thus it is vital to protect it. This layer is fixed to the layers below and should not be opened or disassembled. The interface for attaching auxiliary devices to the computer is on the side. To access the ports on the interface, remove the shell plate as the following picture shows first by removing the bolts on the plate.</p>
+<a class="reference internal image-reference" href="_images/remove_shell_plate.png"><img alt="MOMA mechanical structure" class="align-center" src="_images/remove_shell_plate.png" style="width: 750.0px; height: 250.0px;" /></a>
+</div>
+</div>
+<div class="section" id="lifter">
+<h3>Lifter<a class="headerlink" href="#lifter" title="Permalink to this headline">¶</a></h3>
+<p>Lifter provides an extra DOF along Z-axis. It can supplement the height of the arm by 250 mm.
+The actuator inside the aluminum column can raise the arm up or lower it down at a constant speed.
+An infrared TOF sensor installed inside the column provides feedback for real-time height control.</p>
+</div>
+<div class="section" id="arm">
+<h3>Arm<a class="headerlink" href="#arm" title="Permalink to this headline">¶</a></h3>
+<p>The arm on MOMA is UR5, a product of Universal Robots. Specifications of UR5 are available through the following link:
+<a class="reference external" href="https://www.universal-robots.com/media/1514597/101081_199901_ur5_technical_details_web_a4_art03_rls_eng.pdf">https://www.universal-robots.com/media/1514597/101081_199901_ur5_technical_details_web_a4_art03_rls_eng.pdf</a>.</p>
+</div>
+<div class="section" id="dorabot-hand3-pro">
+<h3>Dorabot_hand3_pro<a class="headerlink" href="#dorabot-hand3-pro" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="dimensions-of-dorabot-hand3-pro">
+<h4>Dimensions of Dorabot_hand3_pro<a class="headerlink" href="#dimensions-of-dorabot-hand3-pro" title="Permalink to this headline">¶</a></h4>
+<div class="align-centered figure align-center">
+<a class="reference internal image-reference" href="_images/dimensions_of_dorabot_hand3_pro_tailor.png"><img alt="_images/dimensions_of_dorabot_hand3_pro_tailor.png" src="_images/dimensions_of_dorabot_hand3_pro_tailor.png" style="width: 80%;" /></a>
+</div>
+</div>
+<div class="section" id="names-of-jonits-on-each-finger">
+<h4>Names of jonits on each finger:<a class="headerlink" href="#names-of-jonits-on-each-finger" title="Permalink to this headline">¶</a></h4>
+<div class="align-centered figure align-center">
+<a class="reference internal image-reference" href="_images/name_of_joint.png"><img alt="_images/name_of_joint.png" src="_images/name_of_joint.png" style="width: 80%;" /></a>
+</div>
+</div>
+<div class="section" id="features-and-benefits">
+<h4>Features and Benefits<a class="headerlink" href="#features-and-benefits" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul>
+<li><p class="first">Modular 3D-Printed Design:</p>
+<blockquote>
+<div><p>Can be easily modified by Dorabot for possible future improvements.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Fully Actuated Phalanges:</p>
+<blockquote>
+<div><p>Provides full control to perform dexterous tasks.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Tendon-Sheath Force Transmission:</p>
+<blockquote>
+<div><p>Keeps the design compact.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Multitude of Sensors:</p>
+<blockquote>
+<div><p>Provide various feedbacks to help achieve the desired grasp.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="specifications">
+<h4>Specifications<a class="headerlink" href="#specifications" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Specifications</th>
+<th class="head">Details</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Kinematics</td>
+<td><ul class="first last simple">
+<li>Number of fingers: 3</li>
+<li>Fingers which spread: 3</li>
+<li>Joints per finger: 4</li>
+<li>Actuators per finger: 4</li>
+<li>DOFs per finger: 4</li>
+<li>Total hand DOFs: 12</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Range of Motion</td>
+<td><ul class="first last simple">
+<li>MC1 joint: 180 degrees</li>
+<li>MC2 joint: 90 degrees</li>
+<li>PIP joint: 90 degrees</li>
+<li>DIP joint: 90 degrees</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Finger Speed</td>
+<td><ul class="first last simple">
+<li>Finger fully open to fully closed:</li>
+<li>Full 180° finger spread:</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Weight</td>
+<td>Whole hand: 2.89 kg</td>
+</tr>
+<tr class="row-even"><td>Payload</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Finger Force (at fingertip)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Force Transmission Method</td>
+<td>Tendon-sheath</td>
+</tr>
+<tr class="row-odd"><td>Actuactor Type</td>
+<td>Servomotor</td>
+</tr>
+<tr class="row-even"><td>Sensors</td>
+<td><ul class="first last simple">
+<li>1 RealSense SR300 on the base</li>
+<li>4 angle sensors per finger</li>
+<li>4 tactile sensors per finger</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Power Support</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Dimensions</td>
+<td>See Diagram above</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="electrical-overview">
+<h2>Electrical Overview<a class="headerlink" href="#electrical-overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Mobility Layer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Input Voltage: 30 - 42.5V</p>
+<p>This layer has a circuit board with an STM32 microcontroller. It has the following functions:</p>
+<ul class="simple">
+<li>Control 4 servomotor drives and recieve position feedback</li>
+<li>Recieve data from 5 TOF sensor modules using I2C</li>
+<li>Control the lifter motor</li>
+<li>Recieve relay signal from romote module</li>
+<li>Output emergency stop signal to UR5</li>
+<li>Communicate isolatedly with on-board computer using CAN</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Battery Layer<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Output Voltage: 36V</p>
+<p>This layer has two batteries; one is for on-board computer and the other one is for Mobility Layer and UR5 motor.</p>
+</div>
+<div class="section" id="computer-layer">
+<h3>Computer Layer<a class="headerlink" href="#computer-layer" title="Permalink to this headline">¶</a></h3>
+<p>Input Voltage: 30 - 42.5V</p>
+<p>This layer has the following major components:</p>
+<ul class="simple">
+<li>SD-1000-12: This is a power module that outputs 12V DC for on-board computer, UR5 controller and some other parts</li>
+<li>SD-1000-48: This is another power module that outputs 12V DC for the UR5 motor drives</li>
+<li>Interface of on-board computer with DP, WLAN, USB 3.0 and other ports</li>
+<li>Interface of UR5 controller with DB9 (for mouse and keyboard) display ports</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Lifter<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>It uses a 24V brushless DC motor and has an infrared TOF sensor to measure the current height of the lifter.</p>
+</div>
+<div class="section" id="id4">
+<h3>Arm<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The arm on MOMA is UR5, a product of Universal Robots. Specifications of UR5 are available through this link: (<a class="reference external" href="https://www.universal-robots.com/media/1514597/101081_199901_ur5_technical_details_web_a4_art03_rls_eng.pdf">https://www.universal-robots.com/media/1514597/101081_199901_ur5_technical_details_web_a4_art03_rls_eng.pdf</a>)</p>
+</div>
+<div class="section" id="hand">
+<h3>Hand<a class="headerlink" href="#hand" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>6V 10A power supply</li>
+<li>CAN Communication (for more details, see the datasheet of ADM3053)</li>
+<li>STM32F405 microcontroller that controls 12 servomotors, receives data from tactile sensor boards and communicates with the on-board computer</li>
+</ul>
+</div>
+</div>
+<div class="section" id="communication-overview">
+<h2>Communication Overview<a class="headerlink" href="#communication-overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="communication-structure">
+<h3>Communication Structure<a class="headerlink" href="#communication-structure" title="Permalink to this headline">¶</a></h3>
+<p>The MOMA drive for hardware has 3 modules: <strong>mobile base driver</strong>, <strong>gripper driver</strong> and <strong>CAN package distributor</strong>. <strong>Gripper Driver</strong> is the software projection of MOMA hand. <strong>Mobile Base Driver</strong> is the software projection of mobility layer.</p>
+<div class="figure">
+<img alt="_images/communication_overview.png" src="_images/communication_overview.png" />
+</div>
+<p>Data passing through modules is asynchronous. Modules is only active when new message arrives.
+The upper level software only sees <strong>mobile base driver</strong> and <strong>gripper driver</strong>, These modules provide ROS interfaces. These modules use protobuf to communicate with hardware.</p>
+</div>
+<div class="section" id="software-interfaces-ros-node">
+<h3>Software Interfaces – ROS node<a class="headerlink" href="#software-interfaces-ros-node" title="Permalink to this headline">¶</a></h3>
+<p>The driver layer act as a ROS node, advertise 2 ROS messages <strong>“/hand_state”</strong> and <strong>“/odom”</strong>, subscribe 1 ros message <strong>“/smooth_cmd_vel”</strong>.</p>
+<ol class="arabic simple">
+<li>provides interface for upper level software. formatting ROS message.</li>
+<li>Unpack protobuf message from defined message.</li>
+<li>Communicate with CANPackageDistributor</li>
+</ol>
+</div>
+<div class="section" id="hardware-interfaces-canpackagedistributor">
+<h3>Hardware Interfaces – CANPackageDistributor<a class="headerlink" href="#hardware-interfaces-canpackagedistributor" title="Permalink to this headline">¶</a></h3>
+<p>On-board PC needs to communicate with 2 modules, gripper and mobile base. We use CAN (Controller Area Network) as the interface between on-board PC and hardware. The advantages are listed below:</p>
+<ol class="arabic simple">
+<li>Data correction and CRC16 check included in physical layer in CAN bus.</li>
+<li>Arbitration feature.</li>
+<li>Auto synchronization between bits.</li>
+<li>Using differential voltage signal to represent data bit. For better noise immunity.</li>
+<li>Stress protection: mechanisms used in CAN for protecting transceivers from electrical pulse.</li>
+<li>Error handling mechanism: how the CAN specification inherently enhances communication robustness.</li>
+</ol>
+<p>The interface between on-board PC and hardware is CAN (Controller Area Network), each device has a CAN ID.
+On-board PC needs to communicate with 2 devices, gripper and mobile base.</p>
+<p>On-board PC use PCAN to send message to CAN bus. This device converts data from raw data to CAN packet.
+Each device has a unique CAN ID. Destination is included in CAN packet. This allows multi device communication on one bus.</p>
+</div>
+<div class="section" id="more-detailed-view">
+<h3>More Detailed View<a class="headerlink" href="#more-detailed-view" title="Permalink to this headline">¶</a></h3>
+<p>We use protobuf as the communication protocol between hardware and PC.
+Since protobuf only defined pure data inside, to use protobuf, we pack protobuf data inside another protocol.
+We define the protocol package as follows:</p>
+<p>Protocol is MSB (Most Significant Bit) first. This protocol include 7 fields:</p>
+<ol class="arabic simple">
+<li>2 start byte. They are 0x99 and 0xFB.</li>
+<li>2 bytes of packet number which begins at 0.</li>
+<li>2 bytes of index in current packet. For first byte in the protobuf packet, these bytes should be 0x00 and 0x00.</li>
+<li>2 bytes of protobuf message type which is defined in communication source code.</li>
+<li>2 bytes of packet length. Only content length counts. Length of header is not included.</li>
+<li>4 bytes of CRC32 checksum bytes. Uses CRC32 (Ethernet) polynomial: 0x4C11DB7.</li>
+<li>After all the headers listed above, protobuf raw data is in this field.</li>
+</ol>
+<p>The <strong>CAN Package Distributor</strong> is the one who is able to access hardware. It distribute CAN packages from hardware according to destination CAN ID in the packet.</p>
+</div>
+</div>
+<div class="section" id="sensor-overview">
+<h2>Sensor Overview<a class="headerlink" href="#sensor-overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tof-ranging-sensor">
+<h3>TOF ranging Sensor<a class="headerlink" href="#tof-ranging-sensor" title="Permalink to this headline">¶</a></h3>
+<p>On each side of MOMA’s mobile base, there is a TOF ranging sensor measuring
+the distance to the objects in the front of it. The maximum range of these sensors is 2m.
+More information about that can be found <a class="reference external" href="http://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html">here</a>.</p>
+</div>
+<div class="section" id="bumper">
+<h3>Bumper<a class="headerlink" href="#bumper" title="Permalink to this headline">¶</a></h3>
+<p>The bumper attached along the edges of MOMA’s mobility layer can be treated as
+a switcher. When the bumper is pressed when MOMA collides with an obstacle,
+the bumper output a signal and the mobile base will stop to avoid further damage.</p>
+</div>
+<div class="section" id="encoder">
+<h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">¶</a></h3>
+<p>The encoder of the four motors on mobile base is used to calculate the odom information,
+that is the 2D pose of MOMA.</p>
+</div>
+<div class="section" id="lidar">
+<h3>Lidar<a class="headerlink" href="#lidar" title="Permalink to this headline">¶</a></h3>
+<p>MOMA is equipped with two URG-04, the range of which is 5600mmx240 degree. One is in the left-front side
+of MOMA, and the other is right-back.
+You can go to this <a class="reference external" href="https://www.hokuyo-aut.jp/search/single.php?serial=166">website</a> to know more about them.</p>
+<div class="align-centered figure align-center">
+<img alt="_images/left_front_lidar.jpg" src="_images/left_front_lidar.jpg" />
+</div>
+<div class="align-centered figure align-center">
+<img alt="_images/right_back_lidar.jpg" src="_images/right_back_lidar.jpg" />
+</div>
+</div>
+<div class="section" id="kinect-v2">
+<h3>Kinect V2<a class="headerlink" href="#kinect-v2" title="Permalink to this headline">¶</a></h3>
+<p>There is a very famous RGB-D camera, <a class="reference external" href="https://www.xbox.com/en-US/xbox-one/accessories/kinect">Kinect V2</a> on MOMA’s lifter.
+See <a class="reference internal" href="api_overview.html#kinect-v2-interface"><span class="std std-ref">Kinect V2 Interface</span></a> to know how to get data from it.</p>
+</div>
+<div class="section" id="realsense-sr300">
+<h3>Realsense SR300<a class="headerlink" href="#realsense-sr300" title="Permalink to this headline">¶</a></h3>
+<p>MOMA’s hand is mounted with a Realsense SR300. This is an indoor-used RGB-D camera,
+with range from 0.2m to 1.5m. You can refer to this <a class="reference external" href="https://arxiv.org/abs/1705.05548">article</a>
+to know more about Intel Realsense product.</p>
+<p>If the Realsense SR300 and the Kinect V2 are all turned on and watching the same objects,
+you will find the performance of Realsense SR300 is dramatically decreased.
+You can go to <a class="reference external" href="https://github.com/IntelRealSense/librealsense/blob/v1.12.1/doc/camera_specs.md#f200--sr300-notes">this website</a>
+to know about the reason.</p>
+</div>
+<div class="section" id="proximity-sensor">
+<h3>Proximity Sensor<a class="headerlink" href="#proximity-sensor" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://www.vishay.com/docs/83395/vcnl4000_demo_kit.pdf">proximity sensors</a> on MOMA’s hand measure the distance to objects in the front.
+The maximum range is about 5cm.</p>
+</div>
+<div class="section" id="angle-sensor">
+<h3>Angle Sensor<a class="headerlink" href="#angle-sensor" title="Permalink to this headline">¶</a></h3>
+<p>The angle sensor on MOMA’s hand measure the position of each joints on fingers.
+Check <a class="reference internal" href="api_overview.html#hand-interface"><span class="std std-ref">Hand Interface (moma_hand)</span></a> to know how to get the data of angle sensors.</p>
+</div>
+<div class="section" id="microphone">
+<h3>Microphone<a class="headerlink" href="#microphone" title="Permalink to this headline">¶</a></h3>
+<p>The microphone on MOMA is a <a class="reference external" href="http://www.mxlmics.com/microphones/web-conferencing/AC-404/">MXL AC-404</a>.
+This is a also the one <a class="reference external" href="http://wiki.ros.org/Robots/PR2/HardwareMods#Microphones_.28ears.29_for_the_PR2_head">that was used on PR2</a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="software_overview.html" class="btn btn-neutral float-right" title="Software Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quick_start.html" class="btn btn-neutral" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Dorabot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

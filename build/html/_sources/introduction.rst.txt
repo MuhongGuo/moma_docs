@@ -1,0 +1,53 @@
+Introduction
+============
+
+MOMA is a MObile MAnipulator with rich functions for education and research.
+The goal of creating MOMA is to provide a platform with the access of various sensor data
+and high degree of freedom to control. 
+With MOMA, there are more awesome ideas becoming possible.
+
+Below is a brief introduction for MOMA. 
+Before you get :doc:`start</quick_start>`, you are recommended to read the :doc:`Safety Section</safety>` carefully first.
+
+
+Features Hightlight
+-------------------
+.. TODO: Here should be a diagram of MOMA
+
+- **Rich perception**
+
+MOMA is equipped with plentiful sensors which enable the robot to monitor the state of itself and environment.
+The data from these sensors can be accessed through the provided :doc:`ROS interface</api_overview>`.
+More detail information about these sensors is showed in :doc:`Sensor Overview Section</sensor_overview>`.
+
+
+==================        ===================================================
+Sensors                   Functions
+==================        ===================================================
+TOF Ranging Sensor        Measure the range to objects.     
+Bumper                    Detect collision event with obstacles.  
+Encoder                   Measure the rotation speed of wheels.       
+2D Lidar                  Scan the 2D geometry of scene around MOMA.       
+RGB-D Camera              Take color and depth images of environment.      
+Proximiy Sensor           Measure the range from finger to objects.       
+Angle Sensor              Measure the angle position of joints in finger.
+==================        ===================================================
+
+
+- **High-DOF robotic manipulator**
+
+MOMA has totally 22 degrees of freedom coming from runner, lifter, arm and hand.
+All these degrees of freedom are fully controllable with :doc:`ROS interface</api_overview>`. 
+To know more about these actuator see :doc:`Mechanical Overview Section</mechanical_overview>`.
+
+===========   =======================
+Actuators     Degrees of Freedom
+===========   =======================
+Runner        3
+Lifter        1
+Arm           6
+Hand          4*3 (4 DOF per finger)
+===========   =======================
+
+
+

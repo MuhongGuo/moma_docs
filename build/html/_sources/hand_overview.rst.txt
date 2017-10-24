@@ -1,0 +1,81 @@
+Dorabot_hand3_pro
++++++++++++++++++
+
+Dimensions of Dorabot_hand3_pro
+###############################
+
+.. figure:: _static/hand_overview/dimensions_of_dorabot_hand3_pro_tailor.png
+   :width: 80%
+   :align: center
+   :figclass: align-centered
+   
+
+Names of jonits on each finger:
+#################################
+
+.. figure:: _static/hand_overview/name_of_joint.png
+   :width: 80%
+   :align: center
+   :figclass: align-centered
+   
+Features and Benefits
+########################
+
+  - Modular 3D-Printed Design:
+
+     Can be easily modified by Dorabot for possible future improvements.
+
+  - Fully Actuated Phalanges: 
+
+     Provides full control to perform dexterous tasks.
+
+  - Tendon-Sheath Force Transmission: 
+
+     Keeps the design compact.
+
+  - Multitude of Sensors: 
+
+     Provide various feedbacks to help achieve the desired grasp.
+
+
+Specifications
+#################
+
++------------------------------------+---------------------------------------+
+| Specifications                     | Details                               | 
++====================================+=======================================+
+| Kinematics                         | - Number of fingers: 3                |
+|                                    | - Fingers which spread: 3             |
+|                                    | - Joints per finger: 4                |
+|                                    | - Actuators per finger: 4             |
+|                                    | - DOFs per finger: 4                  |
+|                                    | - Total hand DOFs: 12                 | 
++------------------------------------+---------------------------------------+
+| Range of Motion                    | - MC1 joint: 180 degrees              |
+|                                    | - MC2 joint: 90 degrees               |
+|                                    | - PIP joint: 90 degrees               |
+|                                    | - DIP joint: 90 degrees               |
++------------------------------------+---------------------------------------+
+| Finger Speed                       | - Finger fully open to fully closed:  |
+|                                    | - Full 180° finger spread:            |
++------------------------------------+---------------------------------------+
+| Weight                             | Whole hand: 2.89 kg                   |
++------------------------------------+---------------------------------------+
+| Payload                            |                                       |
++------------------------------------+---------------------------------------+
+| Finger Force (at fingertip)        |                                       |
++------------------------------------+---------------------------------------+
+| Force Transmission Method          | Tendon-sheath                         |
++------------------------------------+---------------------------------------+
+| Actuactor Type                     | Servomotor                            |
++------------------------------------+---------------------------------------+
+| Sensors                            | - 1 RealSense SR300 on the base       |
+|                                    | - 4 angle sensors per finger          |
+|                                    | - 4 tactile sensors per finger        |
++------------------------------------+---------------------------------------+
+| Power Support                      |                                       |
++------------------------------------+---------------------------------------+
+| Dimensions                         | See Diagram above                     |
++------------------------------------+---------------------------------------+
+
+

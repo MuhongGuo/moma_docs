@@ -1,0 +1,52 @@
+Electrical Overview
+--------------------
+
+Mobility Layer
+++++++++++++++++++++
+
+Input Voltage: 30 - 42.5V
+
+This layer has a circuit board with an STM32 microcontroller. It has the following functions:
+
+- Control 4 servomotor drives and recieve position feedback
+- Recieve data from 5 TOF sensor modules using I2C 
+- Control the lifter motor
+- Recieve relay signal from romote module
+- Output emergency stop signal to UR5
+- Communicate isolatedly with on-board computer using CAN
+
+Battery Layer
+++++++++++++++++++++
+Output Voltage: 36V 
+
+This layer has two batteries; one is for on-board computer and the other one is for Mobility Layer and UR5 motor.
+
+Computer Layer
+++++++++++++++++++++
+
+Input Voltage: 30 - 42.5V
+
+This layer has the following major components:
+
+- SD-1000-12: This is a power module that outputs 12V DC for on-board computer, UR5 controller and some other parts
+- SD-1000-48: This is another power module that outputs 12V DC for the UR5 motor drives
+- Interface of on-board computer with DP, WLAN, USB 3.0 and other ports
+- Interface of UR5 controller with DB9 (for mouse and keyboard) display ports
+	
+
+Lifter
+++++++++++++++++++++
+
+It uses a 24V brushless DC motor and has an infrared TOF sensor to measure the current height of the lifter.
+
+Arm
+++++++++++++++++++++
+
+The arm on MOMA is UR5, a product of Universal Robots. Specifications of UR5 are available through this link: (https://www.universal-robots.com/media/1514597/101081_199901_ur5_technical_details_web_a4_art03_rls_eng.pdf)
+
+Hand
+++++++++++++++++++++
+
+- 6V 10A power supply
+- CAN Communication (for more details, see the datasheet of ADM3053)
+- STM32F405 microcontroller that controls 12 servomotors, receives data from tactile sensor boards and communicates with the on-board computer

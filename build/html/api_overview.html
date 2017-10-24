@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Overview &mdash; MOMA  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MOMA  documentation" href="index.html"/>
+        <link rel="next" title="Specification" href="specification.html"/>
+        <link rel="prev" title="Calibration" href="calibration.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MOMA
+          
+
+          
+            
+            <img src="_static/logo_moma.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="document_outline.html">Document Outline (TEMPORARY)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware_overview.html">Hardware Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_overview.html">Software Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="care_protection.html">Care and Protection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Turtorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigation.html">Navigation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mobile-base-interface-moma-base">Mobile Base Interface (moma_base)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#published-topics">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribed-topics">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provided-tf-transforms">Provided tf Transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lifter-interface-moma-lifter">Lifter Interface (moma_lifter)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arm-interface-moma-arm">Arm Interface (moma_arm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hand-interface-moma-hand">Hand Interface (moma_hand)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lidar-interface-moma-lidar">Lidar Interface (moma_lidar)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Provided tf Transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tof-interface">TOF Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#realsense-sr300-interface-moma-eye-in-hand">Realsense SR300 Interface (moma_eye_in_hand)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Provided tf Transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#kinect-v2-interface">Kinect V2 Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Provided tf Transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#audio-interface">Audio Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="specification.html">Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MOMA</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-overview">
+<h1>API Overview<a class="headerlink" href="#api-overview" title="Permalink to this headline">¶</a></h1>
+<p>MOMA is allowed to send commands to its acuators and read data from sensors
+by assessing its standard ROS interfaces. With these interfaces, it is easy to
+play on MOMA with your ROS packages or those from ROS community.</p>
+<ul class="simple">
+<li>Maintainer: Muhong Guo &lt;muhong.guo AT dorabot DOT com&gt;</li>
+<li>Author: Muhong Guo</li>
+<li>License: GPLv2. See license attached</li>
+<li>Source: /home/moma/moma/moma_ros/src/moma_drivers</li>
+</ul>
+<div class="section" id="mobile-base-interface-moma-base">
+<h2>Mobile Base Interface (moma_base)<a class="headerlink" href="#mobile-base-interface-moma-base" title="Permalink to this headline">¶</a></h2>
+<p>The mobile base of MOMA has the ability of omnidirectional movement thanks to
+its 3 degrees of freedom, which are x, y and yaw.</p>
+<div class="section" id="published-topics">
+<h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">/odom (nav_msgs::Odometry)</p>
+<p>2D pose information of MOMA.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="subscribed-topics">
+<h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~cmd_vel (geometry_msgs/Twist)</p>
+<p>The velcoity commands meant for execution by the mobile base.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="provided-tf-transforms">
+<h3>Provided tf Transforms<a class="headerlink" href="#provided-tf-transforms" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">odom -&gt; base_footprint</p>
+<p>The current estimate of the robot’s pose with respect to odom.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~frequency (int, default: 30)</p>
+<p>The frequency of publishing messages to “/odom”</p>
+</li>
+<li><p class="first">~odom_topic (string, default: “/odom”)</p>
+<p>The topic to which the 2D pose information is published.</p>
+</li>
+<li><p class="first">~vel_topic (string, default: “cmd_vel”)</p>
+<p>The topic from which the 2D velocity of mobile base is Subscribed.</p>
+</li>
+<li><p class="first">~base_frame (string, default: “base_footprint”)</p>
+<p>The frame attached to the mobile base.</p>
+</li>
+<li><p class="first">~odom_frame (string, default: “odom”)</p>
+<p>The frame attached to the odometry system.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_socketcan moma_socketcan.launch
+$ roslaunch moma_base moma_base.launch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lifter-interface-moma-lifter">
+<span id="lifter-interface"></span><h2>Lifter Interface (moma_lifter)<a class="headerlink" href="#lifter-interface-moma-lifter" title="Permalink to this headline">¶</a></h2>
+<p>The lifter’s height can be set by sending an expected value to it.
+Not that if the direction the lifter is to move is differenct from the one in last time,
+it will go through a dead zone, which takes about 1 second.
+After that, when the lifter goes up, the speed is 0.0088 m/s,
+and when it goes down, the speed is 0.0112 m/s.</p>
+<p>Since the position of the moving joint in lifter is measured by a TOF ranging sensor,
+for convenience, data from other TOF ranging sensors in mobile base is provided in this package.</p>
+<div class="section" id="id1">
+<h3>Published Topics<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~lifter_state (<a class="reference external" href="../../include/msg/LifterState.html">moma_msgs::LifterState</a>)</p>
+<p>Provide the lifting height.</p>
+</li>
+<li><p class="first">/joint_states (sensor_msgs::JointState)</p>
+<p>Provide the name of its moving joint and the joint’s position to robot_state_publisher.
+The position value is the same with that publihsed in ~lifter_state.</p>
+</li>
+<li><p class="first">~tof_state (<a class="reference external" href="../../include/msg/TOFState.html">moma_msgs::TOFState</a>)</p>
+<p>Provide the ranging data from the four TOF ranging sensors in mobile base.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Subscribed Topics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~lifter_cmd (<a class="reference external" href="../../include/msg/LifterCommand.html">moma_msgs::LifterCommand</a>)</p>
+<p>To send the expected value of the lifting height.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~frequency (int, default: 30)</p>
+<p>The frequency to publish messages in all its provided topics.</p>
+</li>
+<li><p class="first">~joint_name (string, default: “lift_move_joint”)</p>
+<p>The moving joint of lifter in MOMA’s URDF.</p>
+</li>
+<li><p class="first">~lifter_state_topic (string, default: “lifter_state”)</p>
+<p>The topic to publish lifter state.</p>
+</li>
+<li><p class="first">~lifter_cmd_topic (string, default: “lifter_cmd”)</p>
+<p>The topic to send lifter command.</p>
+</li>
+<li><p class="first">~tof_state_topic (string, default: “tof_state_cmd”)</p>
+<p>The topic to publish the data from TOF ranging sensors in mobile base.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Usage<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_socketcan moma_socketcan.launch
+$ roslaunch moma_lifter moma_lifter.launch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arm-interface-moma-arm">
+<h2>Arm Interface (moma_arm)<a class="headerlink" href="#arm-interface-moma-arm" title="Permalink to this headline">¶</a></h2>
+<p>The ROS driver of UR5 in MOMA is from <a class="reference external" href="https://github.com/ThomasTimm/ur_modern_driver">ur_modern_driver</a>.
+With this driver, you can not only control the positions and velocities of UR5’s joints,
+but can also send <a class="reference external" href="https://s3-eu-west-1.amazonaws.com/ur-support-site/17224/scriptmanual_en.pdf">URScript</a>
+to do more other interactions with UR5.</p>
+<p>To verify your code in a real robot arm sometimes is very dangerous,
+especially when you cannot guarantee the arm’s actions won’t hurt human and itself.
+Thankfully Universal Robots provides a <a class="reference external" href="https://www.universal-robots.com/download/?option=16647">simulator</a>
+on which you can do any experiments on UR5 without worrying those terrible things.</p>
+</div>
+<div class="section" id="hand-interface-moma-hand">
+<span id="hand-interface"></span><h2>Hand Interface (moma_hand)<a class="headerlink" href="#hand-interface-moma-hand" title="Permalink to this headline">¶</a></h2>
+<p>The hand of MOMA can be controlled on either the positions of joints or the velocities of motors.
+Besides the hand provides information about joint angles and range to objects closed to those proximity sensors.
+The limitation of each joints’ positions can be checked in <strong>moma_hand/config/moma_hand_config.yaml</strong>.</p>
+<div class="section" id="id5">
+<h3>Published Topics<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">～hand_state (<a class="reference external" href="../../include/msg/HandState.html">moma_msgs::HandState</a>)</p>
+<p>Publish data from sensors on hand.</p>
+</li>
+<li><p class="first">/joint_states (sensor_msgs::JointState)</p>
+<p>Provide all the name of joints and there position to robot_state_publisher.
+The position values are the same with those publihsed in ~hand_state.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>Subscribed Topics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~hand_cmd (<a class="reference external" href="../../include/msg/HandCommand.html">moma_msgs::HandCommand</a>)</p>
+<p>The control command can be either the expected positions of joints or the expected
+velocities of motors. The names of joints are required.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~frequency (int, default: 30)</p>
+<p>The frequency to publish messages in all its provided topics.</p>
+</li>
+<li><p class="first">~hand_state_topic (string, default: “hand_cmd”)</p>
+<p>The topic to publish hand state.</p>
+</li>
+<li><p class="first">~hand_cmd_topic (string, default: “hand_cmd”)</p>
+<p>The topic to send hand command.</p>
+</li>
+<li><p class="first">~hand_root_link (string, default: “hand_root_link”)</p>
+<p>The first link of hand from which the rest of links stretch.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Usage<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_socketcan moma_socketcan.launch
+$ roslaunch moma_hand moma_hand.launch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lidar-interface-moma-lidar">
+<h2>Lidar Interface (moma_lidar)<a class="headerlink" href="#lidar-interface-moma-lidar" title="Permalink to this headline">¶</a></h2>
+<p>The ROS driver of lidars in MOMA is from <a class="reference external" href="http://wiki.ros.org/urg_node">urg_node</a>.
+These two lidars is distinguished by their serial ports,
+which are mapped to /dev/sensors/hokuyo_&lt;ID&gt;.
+The mapping process can be found in this <a class="reference external" href="http://www.clearpathrobotics.com/assets/guides/ros/Udev%20Rules.html">tutorial</a>.</p>
+<div class="section" id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">~serial_port_lf (string, default: “dev/sensors/hokuyo_H15200700”)</p>
+<p>The port to get data from the left-front lidar.</p>
+</li>
+<li><p class="first">~frame_id_lf (string, default: “lidar_leftfront”)</p>
+<p>The frame to which the data from the left-front lidar is with respect.</p>
+</li>
+<li><p class="first">~scan_lf (string, default: “/base_scan_leftfront”)</p>
+<p>The topic to publish scan message of the left-front lidar.</p>
+</li>
+<li><p class="first">~serial_port_rb (string, default: “dev/sensors/hokuyo_H1520114”)</p>
+<p>The port to get data from the right-back lidar.</p>
+</li>
+<li><p class="first">~frame_id_rb (string, default: “lidar_rightback”)</p>
+<p>The frame to which the data from the right-back lidar is with respect.</p>
+</li>
+<li><p class="first">~scan_rb (string, default: “/base_scan_rightback”)</p>
+<p>The topic to publish scan message of the right-back lidar.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Provided tf Transforms<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">base_footprint -&gt; lidar_leftfront</p>
+<p>The static transformation from base_footprint frame to lidar_leftfront frame.</p>
+</li>
+<li><p class="first">base_footprint -&gt; lidar_rightback</p>
+<p>The static transformation from base_footprint frame to lidar_rightback frame.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>Usage<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_lidar moma_lidar.launch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tof-interface">
+<h2>TOF Interface<a class="headerlink" href="#tof-interface" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="#lifter-interface"><span class="std std-ref">Lifter Interface (moma_lifter)</span></a>.</p>
+</div>
+<div class="section" id="realsense-sr300-interface-moma-eye-in-hand">
+<h2>Realsense SR300 Interface (moma_eye_in_hand)<a class="headerlink" href="#realsense-sr300-interface-moma-eye-in-hand" title="Permalink to this headline">¶</a></h2>
+<p>This ROS driver of Realsense SR300 is from
+<a class="reference external" href="http://wiki.ros.org/realsense_camera">realsense_camera</a>.
+The launch file used in MOMA is sr300_nodelet_rgbd.launch.</p>
+<div class="section" id="id12">
+<h3>Provided tf Transforms<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">ee_link -&gt; camera_link</p>
+<p>The static transformation from ee_link frame to camera_link frame.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Usage<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_eye_in_hand moma_eye_in_hand.launch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kinect-v2-interface">
+<span id="id14"></span><h2>Kinect V2 Interface<a class="headerlink" href="#kinect-v2-interface" title="Permalink to this headline">¶</a></h2>
+<p>The ROS driver of Kinect V2 is from <a class="reference external" href="https://github.com/code-iai/iai_kinect2">iai_kinect2</a>.
+Please go through the main page of this driver in details to know more about how to use Kinect V2.</p>
+<div class="section" id="id15">
+<h3>Provided tf Transforms<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">base_link -&gt; kinect2_link</p>
+<p>The static transformation from base_link frame to kinect2_link frame.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>Usage<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_global_eye moma_global_eye.launch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="audio-interface">
+<h2>Audio Interface<a class="headerlink" href="#audio-interface" title="Permalink to this headline">¶</a></h2>
+<p>The ROS driver of the audio device is from <a class="reference external" href="http://wiki.ros.org/audio_common">audio_common</a>.
+You can subscribe the topic “/audio” to get data from microphone.</p>
+<div class="section" id="id17">
+<h3>Usage<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ roslaunch moma_ear moma_ear.launch
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="specification.html" class="btn btn-neutral float-right" title="Specification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="calibration.html" class="btn btn-neutral" title="Calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Dorabot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

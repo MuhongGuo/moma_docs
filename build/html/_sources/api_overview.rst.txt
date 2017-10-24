@@ -1,0 +1,312 @@
+API Overview
+============
+
+MOMA is allowed to send commands to its acuators and read data from sensors 
+by assessing its standard ROS interfaces. With these interfaces, it is easy to 
+play on MOMA with your ROS packages or those from ROS community.
+
+
+- Maintainer: Muhong Guo <muhong.guo AT dorabot DOT com>
+- Author: Muhong Guo
+- License: GPLv2. See license attached
+- Source: /home/moma/moma/moma_ros/src/moma_drivers
+
+Mobile Base Interface (moma_base)
+----------------------------------------------
+
+The mobile base of MOMA has the ability of omnidirectional movement thanks to 
+its 3 degrees of freedom, which are x, y and yaw.
+
+Published Topics
++++++++++++++++++
+- /odom (nav_msgs::Odometry)
+
+  2D pose information of MOMA.
+
+Subscribed Topics
++++++++++++++++++
+- ~cmd_vel (geometry_msgs/Twist)
+
+  The velcoity commands meant for execution by the mobile base.
+
+Provided tf Transforms
++++++++++++++++++++++++
+- odom -> base_footprint
+
+  The current estimate of the robot's pose with respect to odom.
+
+Parameters
+++++++++++
+- ~frequency (int, default: 30)
+
+  The frequency of publishing messages to "/odom"
+
+- ~odom_topic (string, default: "/odom")
+
+  The topic to which the 2D pose information is published.
+  
+- ~vel_topic (string, default: "cmd_vel")
+
+  The topic from which the 2D velocity of mobile base is Subscribed.
+
+- ~base_frame (string, default: "base_footprint")
+
+  The frame attached to the mobile base.
+
+- ~odom_frame (string, default: "odom")
+ 
+  The frame attached to the odometry system.
+
+  
+Usage
++++++
+
+::
+
+$ roslaunch moma_socketcan moma_socketcan.launch
+$ roslaunch moma_base moma_base.launch
+
+.. _lifter_Interface:
+
+Lifter Interface (moma_lifter)
+------------------------------
+
+The lifter's height can be set by sending an expected value to it. 
+Not that if the direction the lifter is to move is differenct from the one in last time,
+it will go through a dead zone, which takes about 1 second. 
+After that, when the lifter goes up, the speed is 0.0088 m/s, 
+and when it goes down, the speed is 0.0112 m/s.
+
+Since the position of the moving joint in lifter is measured by a TOF ranging sensor,
+for convenience, data from other TOF ranging sensors in mobile base is provided in this package.
+
+Published Topics
+++++++++++++++++
+- ~lifter_state (`moma_msgs::LifterState <../../include/msg/LifterState.html>`_)
+
+  Provide the lifting height.
+
+- /joint_states (sensor_msgs::JointState)
+
+  Provide the name of its moving joint and the joint's position to robot_state_publisher.
+  The position value is the same with that publihsed in ~lifter_state.
+
+- ~tof_state (`moma_msgs::TOFState <../../include/msg/TOFState.html>`_)
+
+  Provide the ranging data from the four TOF ranging sensors in mobile base.
+
+Subscribed Topics
++++++++++++++++++
+- ~lifter_cmd (`moma_msgs::LifterCommand <../../include/msg/LifterCommand.html>`_)
+
+  To send the expected value of the lifting height.
+
+Parameters
+++++++++++
+- ~frequency (int, default: 30)
+
+  The frequency to publish messages in all its provided topics.
+
+- ~joint_name (string, default: "lift_move_joint")
+
+  The moving joint of lifter in MOMA's URDF.
+
+- ~lifter_state_topic (string, default: "lifter_state")
+
+  The topic to publish lifter state.
+
+- ~lifter_cmd_topic (string, default: "lifter_cmd")
+
+  The topic to send lifter command.
+
+- ~tof_state_topic (string, default: "tof_state_cmd")
+
+  The topic to publish the data from TOF ranging sensors in mobile base.
+
+Usage
++++++
+::
+
+$ roslaunch moma_socketcan moma_socketcan.launch
+$ roslaunch moma_lifter moma_lifter.launch
+
+Arm Interface (moma_arm)
+------------------------
+The ROS driver of UR5 in MOMA is from `ur_modern_driver <https://github.com/ThomasTimm/ur_modern_driver>`_. 
+With this driver, you can not only control the positions and velocities of UR5's joints,
+but can also send `URScript <https://s3-eu-west-1.amazonaws.com/ur-support-site/17224/scriptmanual_en.pdf>`_ 
+to do more other interactions with UR5.
+
+To verify your code in a real robot arm sometimes is very dangerous, 
+especially when you cannot guarantee the arm's actions won't hurt human and itself. 
+Thankfully Universal Robots provides a `simulator <https://www.universal-robots.com/download/?option=16647>`_ 
+on which you can do any experiments on UR5 without worrying those terrible things.
+
+.. _hand_interface:
+
+Hand Interface (moma_hand)
+--------------------------
+
+The hand of MOMA can be controlled on either the positions of joints or the velocities of motors. 
+Besides the hand provides information about joint angles and range to objects closed to those proximity sensors.
+The limitation of each joints' positions can be checked in **moma_hand/config/moma_hand_config.yaml**.
+
+
+Published Topics
+++++++++++++++++
+- ～hand_state (`moma_msgs::HandState <../../include/msg/HandState.html>`_)
+
+  Publish data from sensors on hand.
+
+- /joint_states (sensor_msgs::JointState)
+
+  Provide all the name of joints and there position to robot_state_publisher.
+  The position values are the same with those publihsed in ~hand_state.
+
+Subscribed Topics
++++++++++++++++++
+- ~hand_cmd (`moma_msgs::HandCommand <../../include/msg/HandCommand.html>`_)
+
+  The control command can be either the expected positions of joints or the expected 
+  velocities of motors. The names of joints are required.
+
+Parameters
+++++++++++
+
+- ~frequency (int, default: 30)
+
+  The frequency to publish messages in all its provided topics.
+
+- ~hand_state_topic (string, default: "hand_cmd")
+
+  The topic to publish hand state.
+
+- ~hand_cmd_topic (string, default: "hand_cmd")
+
+  The topic to send hand command.
+
+- ~hand_root_link (string, default: "hand_root_link")
+
+  The first link of hand from which the rest of links stretch.
+
+Usage
++++++
+
+::
+
+$ roslaunch moma_socketcan moma_socketcan.launch
+$ roslaunch moma_hand moma_hand.launch
+
+Lidar Interface (moma_lidar)
+----------------------------
+
+The ROS driver of lidars in MOMA is from `urg_node <http://wiki.ros.org/urg_node>`_. 
+These two lidars is distinguished by their serial ports, 
+which are mapped to /dev/sensors/hokuyo_<ID>. 
+The mapping process can be found in this `tutorial <http://www.clearpathrobotics.com/assets/guides/ros/Udev%20Rules.html>`_.
+
+Parameters
+++++++++++
+- ~serial_port_lf (string, default: "dev/sensors/hokuyo_H15200700")
+
+  The port to get data from the left-front lidar.
+
+- ~frame_id_lf (string, default: "lidar_leftfront")
+
+  The frame to which the data from the left-front lidar is with respect.
+
+- ~scan_lf (string, default: "/base_scan_leftfront")
+
+  The topic to publish scan message of the left-front lidar.
+
+- ~serial_port_rb (string, default: "dev/sensors/hokuyo_H1520114")
+
+  The port to get data from the right-back lidar.
+
+- ~frame_id_rb (string, default: "lidar_rightback")
+
+  The frame to which the data from the right-back lidar is with respect.
+
+- ~scan_rb (string, default: "/base_scan_rightback")
+
+  The topic to publish scan message of the right-back lidar.
+
+Provided tf Transforms
++++++++++++++++++++++++
+- base_footprint -> lidar_leftfront
+
+  The static transformation from base_footprint frame to lidar_leftfront frame.
+
+- base_footprint -> lidar_rightback
+
+  The static transformation from base_footprint frame to lidar_rightback frame.
+
+Usage
++++++
+
+::
+
+$ roslaunch moma_lidar moma_lidar.launch
+
+
+TOF Interface
+-------------
+
+See :ref:`lifter_interface`.
+
+Realsense SR300 Interface (moma_eye_in_hand)
+--------------------------------------------
+This ROS driver of Realsense SR300 is from 
+`realsense_camera <http://wiki.ros.org/realsense_camera>`_. 
+The launch file used in MOMA is sr300_nodelet_rgbd.launch.
+
+Provided tf Transforms
++++++++++++++++++++++++
+- ee_link -> camera_link
+
+  The static transformation from ee_link frame to camera_link frame.
+
+Usage
++++++
+
+::
+
+$ roslaunch moma_eye_in_hand moma_eye_in_hand.launch
+
+.. _kinect_v2_interface:
+
+Kinect V2 Interface
+---------------------
+
+The ROS driver of Kinect V2 is from `iai_kinect2 <https://github.com/code-iai/iai_kinect2>`_.
+Please go through the main page of this driver in details to know more about how to use Kinect V2. 
+
+
+Provided tf Transforms
++++++++++++++++++++++++
+- base_link -> kinect2_link
+
+  The static transformation from base_link frame to kinect2_link frame.
+
+Usage
++++++
+
+::
+
+$ roslaunch moma_global_eye moma_global_eye.launch
+
+Audio Interface
+---------------
+The ROS driver of the audio device is from `audio_common <http://wiki.ros.org/audio_common>`_. 
+You can subscribe the topic "/audio" to get data from microphone.
+
+
+Usage
++++++
+
+::
+
+$ roslaunch moma_ear moma_ear.launch
+
+
+ 

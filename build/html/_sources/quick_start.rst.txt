@@ -1,0 +1,224 @@
+Quick Start
+===========
+
+If you haven't read the :doc:`Safety Section</safety>`, 
+you are strongly recommended to go through it before you come to this section.
+
+In the Box
+-----------
+
+MOMA is shipped with a box of accessories. 
+Please check that all of the following items are in your package. 
+If any item is missing, please contact Dorabot.
+
+
+.. figure:: _static/quick_start/accessories.jpg
+   :align: center
+   :figclass: align-centered
+
+=======     =============================     ===  ================================================
+Item #      Item Name                         QTY  Description
+=======     =============================     ===  ================================================
+1           Calibration Board                 1    For calibrating cameras on MOMA
+2           Battery Charger                   2    For charging batteries
+3           36V Battery                       2    For replacing batteries inside MOMA
+4           UR5 teach pendant                 1    Manual control interface of UR5
+5           Industrial Controller             1    For E-STOP and recover
+6           Metric Hex Key Set                1    For removig screws and attaching accessories
+7           M4x8mm SHCS and M4 Slider Nut     2    For installing calibration board
+8           M5x8mm SHCS and M5 Slider Nut     2    For installing calibration board
+9           Wi-Fi Antenna                     2    For connecting Wi-Fi network
+10          XBOX One Wireless Controller      1    For remote control of all the actuators on MOMA
+11          DC Power Supply                   1    To supply power
+12          Section Bar                       1    For calibration
+=======     =============================     ===  ================================================
+
+What are on MOMA
+----------------
+
+Let's first get to know some MOMA's components that you need when you want to use it.
+Power Switch, PC Button, UR5 Button and E-STOP Button:
+
+.. figure:: _static/quick_start/buttons.jpg
+   :align: center
+   :figclass: align-centered
+
+The Power Switch of MOMA has three channels of power source:
+
+========  ======================
+Channel   Power Source
+========  ======================
+\-         Batteries
+o         None
+=         External Power Source
+========  ======================
+
+MOMA needs two 36V batteries for power. One is for PC and UR5 control board, the other battery is for the rest. 
+Here you can see the real-time voltage of batteries:
+
+HDMI Interface, USB 3.0 Interface, Wi-Fi Antenna Interface and Ethernet Interface:
+
+.. figure:: _static/quick_start/common_interface.jpg
+   :align: center
+   :figclass: align-centered
+
+DVI Interface, VGA Interface and Power Interfaces of UR5 teach pendant:
+
+.. figure:: _static/quick_start/teach_pendant_interface.jpg
+   :align: center
+   :figclass: align-centered
+
+Turn on MOMA
+------------
+
+Since MOMA is shipped with Batteries, you can turn on MOMA by setting the Power Switch to 
+the "-" position and pressing the PC Button and UR5 Button.
+
+Operate MOMA
+-------------
+
+You may not statisfy with just lighting those buttons. Let's move forward to operate MOMA.
+
+Release E-STOP Buttons
+++++++++++++++++++++++
+
+There are two E-STOP Buttons controlling MOMA. It is very easy to find them, because they are all red. 
+One is on the mobile base, the other is on the 
+industrial controller. By pressing these buttons, any actions performing on arm and mobile base will terminate, 
+and no more commands will affect it. MOMA is shipped with those buttons pressed. So to operate MOMA, 
+you need to twist those buttons clock-wise to release them. But just releasing E-STOP buttons is not 
+enough to control the robot, you should then press the Start Button **twice** to enable mobile base and UR5. 
+Pressing more times dosen't not hurt, so form a habit that always pressing the this button multiple times before 
+you want to control MOMA.
+
+Initialize UR5
+++++++++++++++
+
+Since the joints of UR5 need to be initialized to find there positions, you have to do this initialization 
+before you start to use it. Please go through this `article <http://www.zacobria.com/universal-robots-zacobria-forum-hints-tips-how-to/turn-on-power/>`_ to know how this process goes. 
+
+
+XBOX One Wireless Controller
+++++++++++++++++++++++++++++
+
+Now you have prepare all the things needed to operate MOMA. 
+Please pick up XBOX One controller and start to do some fancy stuffs.
+
+
+.. warning::
+
+  First, garuantee the industrial controller is within your reach. 
+  Ideally, as long as MOMA is going to move, 
+  you should alway put your thumb over the E-STOP button of industrial controller 
+  so that you can stop MOMA immediately when something terrible is to happen. 
+  But because we have to use both of our hands in some case of teleopeation, you can keep the 
+  industrial controller nearby.
+
+Here is the layout of XBOX One controller:
+
+
+.. figure:: _static/quick_start/xbox_controller.png
+   :align: center
+   :figclass: align-centered
+
+The next step is to bring up drivers of all the actuators on MOMA by pressing 
+this combination of buttons at the same time: 
+
+::
+
+  Left Trigger + Right Trigger + Left Bumper + Right Bumper + Guide
+
+And you need to know how to control each component of MOMA:
+
+Mobile Base
+###########
+
+When controlling the mobile base, please keep pressing **Left Trigger** and 
+follow the instruction below to perform different actions:
+
+======================    ==============================
+Controller                Mobile Base
+======================    ==============================
+Left Stick up/down        Move forward/backward
+Left Stick left/right     Move left/right
+Right Stick left/right    Turn left/right
+Button Y                  Increase linear velocity
+Button A                  Decrease linear velocity
+Button X                  Increase angular velocity
+Button B                  Decrease angular velocity
+======================    ==============================
+
+.. warning::
+
+  Since there is no 2d collision checking and the acceleration is limited to a small value 
+  when teleoperate the mobile base with XBox One Controller, you should be careful not to 
+  let MOMA hit anything.
+
+.. warning::
+
+  Since the mobile base is designed to move only on plane ground, you should keep its workspace clean 
+  without any cables or screws, etc.
+
+
+Hand
+####
+
+When controlling the hand, please keep pressing **Right Trigger** and 
+follow the instruction below to perform different actions:
+
+=============================    ================================================
+Controller                       Hand
+=============================    ================================================
+Button Y + Left Stick up/down    Grasp/Release with three fingers
+Button B + Left Stick up/down    Grasp/Release with three fingers
+Button A + Left Stick up/down    Grasp/Release with three fingers
+Right Stick up/down              Move the pan joints of the two fingers on sides
+Back                             Seperate fingers
+Start                            Get fingers together
+=============================    ================================================
+
+Arm
+######
+
+When controlling the arm, please keep pressing **Left Bumper** and 
+follow the instruction below to perform different actions:
+
+=================================     ===========================
+Controller                            Arm
+=================================     ===========================
+Button Y + Left Stick up/down         Move shoulder_pan_joint
+Button Y + Left Stick left/right      Move shoulder_lift_joint
+Button B + Left Stick up/down         Move elbow_joint
+Button B + Left Stick left/right      Move wrist_1_joint
+Button A + Left Stick up/down         Move wrist_2_joint
+Button A + Left Stick left/right      Move wrist_3_joint
+Button Y + Right Stick up/down        Move EE along x axis
+Button Y + Right Stick left/right     Turn EE around x axis
+Button B + Right Stick up/down        Move EE along y axis
+Button B + Right Stick left/right     Turn EE around y axis
+Button A + Right Stick up/down        Move EE along z axis
+Button A + Right Stick left/right     Turn EE around z axis
+=================================     ===========================
+
+.. warning::
+
+  Please be careful when you are controlling UR5 with XBOX One Controller, 
+  because there is no any collision checking and the arm may collide with itself or others. 
+  What's more, you should be very anxious when the arm is moving to its singularities, where 
+  the speed of the arm's movement will become very fast.
+
+Lifter
+######
+
+When controlling the lifter, please keep pressing **Right Bumper** and 
+follow the instruction below to perform different actions:
+
+==========    ==========
+Controller    Lifter
+==========    ==========
+Button Y      Move up
+Button A      Move down
+==========    ==========
+
+Have fun with operating MOMA! 
+

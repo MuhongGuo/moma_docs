@@ -1,0 +1,80 @@
+Sensor Overview
+------------------------
+
+TOF ranging Sensor
+++++++++++++++++++++
+
+On each side of MOMA's mobile base, there is a TOF ranging sensor measuring 
+the distance to the objects in the front of it. The maximum range of these sensors is 2m. 
+More information about that can be found `here <http://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html>`_.
+
+Bumper
+++++++++
+
+The bumper attached along the edges of MOMA's mobility layer can be treated as 
+a switcher. When the bumper is pressed when MOMA collides with an obstacle, 
+the bumper output a signal and the mobile base will stop to avoid further damage.
+
+
+Encoder
+++++++++
+
+The encoder of the four motors on mobile base is used to calculate the odom information, 
+that is the 2D pose of MOMA.
+ 
+
+Lidar
+++++++
+
+
+
+MOMA is equipped with two URG-04, the range of which is 5600mmx240 degree. One is in the left-front side
+of MOMA, and the other is right-back. 
+You can go to this `website <https://www.hokuyo-aut.jp/search/single.php?serial=166>`_ to know more about them.
+
+.. figure:: _static/sensor_overview/left_front_lidar.jpg
+   :align: center
+   :figclass: align-centered
+
+
+.. figure:: _static/sensor_overview/right_back_lidar.jpg
+   :align: center
+   :figclass: align-centered
+
+Kinect V2
+++++++++++
+
+There is a very famous RGB-D camera, `Kinect V2 <https://www.xbox.com/en-US/xbox-one/accessories/kinect>`_ on MOMA's lifter. 
+See :ref:`kinect_v2_interface` to know how to get data from it.
+
+
+Realsense SR300
+++++++++++++++++
+
+MOMA's hand is mounted with a Realsense SR300. This is an indoor-used RGB-D camera, 
+with range from 0.2m to 1.5m. You can refer to this `article <https://arxiv.org/abs/1705.05548>`_ 
+to know more about Intel Realsense product.
+
+If the Realsense SR300 and the Kinect V2 are all turned on and watching the same objects, 
+you will find the performance of Realsense SR300 is dramatically decreased. 
+You can go to `this website <https://github.com/IntelRealSense/librealsense/blob/v1.12.1/doc/camera_specs.md#f200--sr300-notes>`_ 
+to know about the reason.
+
+
+Proximity Sensor
+++++++++++++++++++
+
+The `proximity sensors <https://www.vishay.com/docs/83395/vcnl4000_demo_kit.pdf>`_ on MOMA's hand measure the distance to objects in the front. 
+The maximum range is about 5cm.
+
+Angle Sensor
+++++++++++++++
+
+The angle sensor on MOMA's hand measure the position of each joints on fingers. 
+Check :ref:`hand_interface` to know how to get the data of angle sensors. 
+
+Microphone
+++++++++++
+
+The microphone on MOMA is a `MXL AC-404 <http://www.mxlmics.com/microphones/web-conferencing/AC-404/>`_. 
+This is a also the one `that was used on PR2 <http://wiki.ros.org/Robots/PR2/HardwareMods#Microphones_.28ears.29_for_the_PR2_head>`_. 

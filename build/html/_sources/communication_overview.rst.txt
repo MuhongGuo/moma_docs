@@ -1,0 +1,72 @@
+Communication Overview
+---------------------------
+Communication Structure
++++++++++++++++++++++++++++++++++++++++++++++++++
+The MOMA drive for hardware has 3 modules: **mobile base driver**, **gripper driver** and **CAN package distributor**. **Gripper Driver** is the software projection of MOMA hand. **Mobile Base Driver** is the software projection of mobility layer.
+
+.. figure:: _static/communication_overview/communication_overview.png
+
+
+Data passing through modules is asynchronous. Modules is only active when new message arrives.
+The upper level software only sees **mobile base driver** and **gripper driver**, These modules provide ROS interfaces. These modules use protobuf to communicate with hardware.
+
+Software Interfaces -- ROS node
++++++++++++++++++++++++++++++++++++++++++++++++++
+The driver layer act as a ROS node, advertise 2 ROS messages **"/hand_state"** and **"/odom"**, subscribe 1 ros message **"/smooth_cmd_vel"**.
+
+1. provides interface for upper level software. formatting ROS message.
+
+#. Unpack protobuf message from defined message.
+
+#. Communicate with CANPackageDistributor
+
+
+
+Hardware Interfaces -- CANPackageDistributor
++++++++++++++++++++++++++++++++++++++++++++++++++
+On-board PC needs to communicate with 2 modules, gripper and mobile base. We use CAN (Controller Area Network) as the interface between on-board PC and hardware. The advantages are listed below:
+
+1. Data correction and CRC16 check included in physical layer in CAN bus.
+
+#. Arbitration feature.
+
+#. Auto synchronization between bits.
+
+#. Using differential voltage signal to represent data bit. For better noise immunity.
+
+#. Stress protection: mechanisms used in CAN for protecting transceivers from electrical pulse.
+
+#. Error handling mechanism: how the CAN specification inherently enhances communication robustness.
+
+The interface between on-board PC and hardware is CAN (Controller Area Network), each device has a CAN ID.
+On-board PC needs to communicate with 2 devices, gripper and mobile base.
+
+On-board PC use PCAN to send message to CAN bus. This device converts data from raw data to CAN packet.
+Each device has a unique CAN ID. Destination is included in CAN packet. This allows multi device communication on one bus.
+
+
+More Detailed View
++++++++++++++++++++++++++++++++++++++++++++++++++
+We use protobuf as the communication protocol between hardware and PC.
+Since protobuf only defined pure data inside, to use protobuf, we pack protobuf data inside another protocol.
+We define the protocol package as follows:
+
+Protocol is MSB (Most Significant Bit) first. This protocol include 7 fields:
+
+1. 2 start byte. They are 0x99 and 0xFB.
+
+#. 2 bytes of packet number which begins at 0.
+
+#. 2 bytes of index in current packet. For first byte in the protobuf packet, these bytes should be 0x00 and 0x00.
+
+#. 2 bytes of protobuf message type which is defined in communication source code.
+
+#. 2 bytes of packet length. Only content length counts. Length of header is not included.
+
+#. 4 bytes of CRC32 checksum bytes. Uses CRC32 (Ethernet) polynomial: 0x4C11DB7.
+
+#. After all the headers listed above, protobuf raw data is in this field.
+
+
+The **CAN Package Distributor** is the one who is able to access hardware. It distribute CAN packages from hardware according to destination CAN ID in the packet.
+

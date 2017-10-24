@@ -1,0 +1,57 @@
+Safety
+======
+
+Since the robot doesn't have any consciousness, it just performs commands 
+from program, you should always garuantee you can press E-STOP button anytime 
+the robot is moving. **Remember**:
+
+.. note::
+
+  **Don't trust any program, trust E-STOP.** 
+
+.. note::
+
+  **Don't trust any program, trust E-STOP.** 
+
+.. note::
+
+  **Don't trust any program, trust E-STOP.** 
+
+
+Mobile Base
+------------
+
+- The mobile base is designed to move on **only** plane ground. So keep its workspace clean without any cables or screws, etc.
+
+- If your program cannot let MOMA respond to obstacles at a high frequency, always keep it at a low speed.
+
+Lifter
+------
+
+- Watch out the top of mobile base when the lifter is going down. Otherwise the shell of lifter may crush something.
+
+- Watch out the arm when the lifter is going up and make sure it won't hit something.
+
+Arm
+-------
+
+- Always let MOMA know what is around it and give it the ability to move without collision, otherwise keep its workspace empty.
+
+- Limit the velocity and effort of the arm's joints if you don't have the confidence on your code.
+
+
+
+Electricity
+-------------
+
+- When MOMA is going to use external power source, make sure the voltage is around 36V before you set the Power Switch.
+
+- If you found any wire broken, don't continue using MOMA. Shut it down and contact Dorabot Inc.
+
+Others
+-------
+
+- Don't try to carry MOMA up. If you really need to do that, uninstall the sells on mobility layer first, and ask three men to help you.
+
+
+

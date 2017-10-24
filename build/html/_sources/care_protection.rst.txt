@@ -1,0 +1,20 @@
+Care and Protection
+===================
+
+Battery
+-----------
+
+- When the voltage of a bettery is below 34 V, it is time to replace it. The battery for PC is always the first one running out. So take more care of it.
+
+Arm
+----
+
+- Keep the center of gravity over lifter.
+
+- Don't push and pull the arm when you want to move MOMA. You can push mobile base instead.
+
+
+RGB-D Cameras
+---------------
+
+- Protect the Realsense SR300 and the Kinect v2 on MOMA from any obstacles.

@@ -1,0 +1,25 @@
+Manipulation
+============
+
+MoveIt! Configurations
+------------------------
+
+MOMA is shipped with `MoveIt! <http://docs.ros.org/indigo/api/moveit_tutorials/html/index.html>`_ 
+configurations in **moma_moveit_config**. 
+You can also generate a new configuration package following the instruction in **moma_moveit_bringup/README.md**.
+
+
+Motion Planning in RVIZ
+--------------------------
+
+- Launch moma_visualization.launch 
+- Show **MotionPlanning** in RVIZ 
+- Choose an Ompl Planning Library. For example, RRTkConfigDefault.
+- Update current state.
+- Set a goal state.
+- Plan.
+- Excution.
+
+.. figure:: _static/motion_planning/motion_planning.png
+   :align: center
+   :figclass: align-centered

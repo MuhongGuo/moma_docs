@@ -1,0 +1,130 @@
+Document Outline (TEMPORARY)
+============================
+
+Since the readers of this document would mainly be undergraduate and graduated students, 
+who may not have much experience and knowledge of working with robot, 
+it will be helpful to attach links of reference for them. 
+
+This document should be written to introduce how to use MOMA, instead of how to design it.
+Thus it is unnecessary to include much details.
+Nonetheless, there should be enough information to support readers' work.
+
+Always start from usage. Consider as many scenarios as possible, 
+especially when we are writing *Safty* and *Care and Protection* section.
+
+"Talk is cheap, show me your code." Using other forms, such as picture, graph, video, 
+always help to understand.
+
+
+Quick Start
+-----------
+- Brief Introduction of MOMA
+
+  Global basic information. What is MOMA? What is it for? What can it do?
+
+- How to run MOMA
+
+  Start from receiving a new MOMA, introduce how to run it up step by step.
+
+- Author: Muhong
+
+Safety
+------
+
+Things should be noted to protect users.
+
+- Author: Muhong
+
+.. note::
+
+  If there is something in your feild that belongs to this section,
+  create a file naming saftey_<your filed>.rst (eg. safety_electrical.rst),
+  write down your concerns, and add the file name to safety.rst.
+
+Hardware Overview
+-----------------
+
+Mechanical Overview
++++++++++++++++++++
+- Structure: runner, lifter, arm, hand
+- Functions
+- Work principle 
+- Author:
+
+  - Mark: runner, lifter, arm
+  - KK: hand
+  - Mark and KK may need to discuss their cooperation.
+
+
+Electronical Overview
++++++++++++++++++++++
+- Components: main board, PC board, UR board, hand main board
+- Connection
+
+  Possbile example of Connection Graph (from Fetch document):
+
+.. figure:: _static/document_outline/communications.png
+   :width: 80%
+   :align: center
+   :figclass: align-centered
+
+- Power solution: Battery, DC-DC, power for boards and motors
+- Emergent Stop
+- Author: Finbar
+
+Sensor Overview
++++++++++++++++
+- Components: bumper, tof, lidar, encoder, Kinect v2, Realsense SR300, proximity sensor, angle sensor
+- Features
+- Author: Sheldon
+
+Communication
++++++++++++++
+- Data flow graph
+- Frequency
+- Author: Rafael
+
+Computer Overview
+-----------------
+- Environment
+- Package Dependences
+- Code
+- User Interface
+- Author: Muhong
+
+
+Care and Protection
+-------------------
+- Charging
+- How to enable long term usage
+- Which things should be avoid
+- Author: Mark, Finbar, Sheldon, KK
+
+Add our suggestions for readers.
+
+Tutorials
+---------
+- Components: visualization, navigation, manipulation, grasping, calibration, perception
+- Author: Muhong
+
+
+API Overview
+------------
+- Robot Interface
+- Base Interface
+- Bumper Interface
+- TOF Interface
+- Lidar Interface
+- Lifter Interface
+- Global eye Interface
+- Arm Interface
+- Hand Interface
+- Eye-in-hand Interface
+- Author: Muhong
+
+License
+-------
+- Software license: `GPLv2 <https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html>`_
+- Documents license: `CC BY 4.0 <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_
+
+

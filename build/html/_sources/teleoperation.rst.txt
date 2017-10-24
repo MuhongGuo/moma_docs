@@ -1,0 +1,4 @@
+Teleoperation
+-------------
+Don't play just have fun. Be careful.
+There is no collision checking and force perception.

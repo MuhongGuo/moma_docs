@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Communication Overview &mdash; MOMA  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MOMA  documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MOMA
+          
+
+          
+            
+            <img src="_static/logo_moma.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="document_outline.html">Document Outline (TEMPORARY)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware_overview.html">Hardware Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_overview.html">Software Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="care_protection.html">Care and Protection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Turtorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigation.html">Navigation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specification.html">Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MOMA</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Communication Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/communication_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="communication-overview">
+<h1>Communication Overview<a class="headerlink" href="#communication-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="communication-structure">
+<h2>Communication Structure<a class="headerlink" href="#communication-structure" title="Permalink to this headline">¶</a></h2>
+<p>The MOMA drive for hardware has 3 modules: <strong>mobile base driver</strong>, <strong>gripper driver</strong> and <strong>CAN package distributor</strong>. <strong>Gripper Driver</strong> is the software projection of MOMA hand. <strong>Mobile Base Driver</strong> is the software projection of mobility layer.</p>
+<div class="figure">
+<img alt="_images/communication_overview.png" src="_images/communication_overview.png" />
+</div>
+<p>Data passing through modules is asynchronous. Modules is only active when new message arrives.
+The upper level software only sees <strong>mobile base driver</strong> and <strong>gripper driver</strong>, These modules provide ROS interfaces. These modules use protobuf to communicate with hardware.</p>
+</div>
+<div class="section" id="software-interfaces-ros-node">
+<h2>Software Interfaces – ROS node<a class="headerlink" href="#software-interfaces-ros-node" title="Permalink to this headline">¶</a></h2>
+<p>The driver layer act as a ROS node, advertise 2 ROS messages <strong>“/hand_state”</strong> and <strong>“/odom”</strong>, subscribe 1 ros message <strong>“/smooth_cmd_vel”</strong>.</p>
+<ol class="arabic simple">
+<li>provides interface for upper level software. formatting ROS message.</li>
+<li>Unpack protobuf message from defined message.</li>
+<li>Communicate with CANPackageDistributor</li>
+</ol>
+</div>
+<div class="section" id="hardware-interfaces-canpackagedistributor">
+<h2>Hardware Interfaces – CANPackageDistributor<a class="headerlink" href="#hardware-interfaces-canpackagedistributor" title="Permalink to this headline">¶</a></h2>
+<p>On-board PC needs to communicate with 2 modules, gripper and mobile base. We use CAN (Controller Area Network) as the interface between on-board PC and hardware. The advantages are listed below:</p>
+<ol class="arabic simple">
+<li>Data correction and CRC16 check included in physical layer in CAN bus.</li>
+<li>Arbitration feature.</li>
+<li>Auto synchronization between bits.</li>
+<li>Using differential voltage signal to represent data bit. For better noise immunity.</li>
+<li>Stress protection: mechanisms used in CAN for protecting transceivers from electrical pulse.</li>
+<li>Error handling mechanism: how the CAN specification inherently enhances communication robustness.</li>
+</ol>
+<p>The interface between on-board PC and hardware is CAN (Controller Area Network), each device has a CAN ID.
+On-board PC needs to communicate with 2 devices, gripper and mobile base.</p>
+<p>On-board PC use PCAN to send message to CAN bus. This device converts data from raw data to CAN packet.
+Each device has a unique CAN ID. Destination is included in CAN packet. This allows multi device communication on one bus.</p>
+</div>
+<div class="section" id="more-detailed-view">
+<h2>More Detailed View<a class="headerlink" href="#more-detailed-view" title="Permalink to this headline">¶</a></h2>
+<p>We use protobuf as the communication protocol between hardware and PC.
+Since protobuf only defined pure data inside, to use protobuf, we pack protobuf data inside another protocol.
+We define the protocol package as follows:</p>
+<p>Protocol is MSB (Most Significant Bit) first. This protocol include 7 fields:</p>
+<ol class="arabic simple">
+<li>2 start byte. They are 0x99 and 0xFB.</li>
+<li>2 bytes of packet number which begins at 0.</li>
+<li>2 bytes of index in current packet. For first byte in the protobuf packet, these bytes should be 0x00 and 0x00.</li>
+<li>2 bytes of protobuf message type which is defined in communication source code.</li>
+<li>2 bytes of packet length. Only content length counts. Length of header is not included.</li>
+<li>4 bytes of CRC32 checksum bytes. Uses CRC32 (Ethernet) polynomial: 0x4C11DB7.</li>
+<li>After all the headers listed above, protobuf raw data is in this field.</li>
+</ol>
+<p>The <strong>CAN Package Distributor</strong> is the one who is able to access hardware. It distribute CAN packages from hardware according to destination CAN ID in the packet.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Dorabot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

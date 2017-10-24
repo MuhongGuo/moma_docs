@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sensor Overview &mdash; MOMA  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MOMA  documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MOMA
+          
+
+          
+            
+            <img src="_static/logo_moma.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="document_outline.html">Document Outline (TEMPORARY)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware_overview.html">Hardware Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_overview.html">Software Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="care_protection.html">Care and Protection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Turtorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigation.html">Navigation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specification.html">Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MOMA</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Sensor Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sensor_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sensor-overview">
+<h1>Sensor Overview<a class="headerlink" href="#sensor-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tof-ranging-sensor">
+<h2>TOF ranging Sensor<a class="headerlink" href="#tof-ranging-sensor" title="Permalink to this headline">¶</a></h2>
+<p>On each side of MOMA’s mobile base, there is a TOF ranging sensor measuring
+the distance to the objects in the front of it. The maximum range of these sensors is 2m.
+More information about that can be found <a class="reference external" href="http://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html">here</a>.</p>
+</div>
+<div class="section" id="bumper">
+<h2>Bumper<a class="headerlink" href="#bumper" title="Permalink to this headline">¶</a></h2>
+<p>The bumper attached along the edges of MOMA’s mobility layer can be treated as
+a switcher. When the bumper is pressed when MOMA collides with an obstacle,
+the bumper output a signal and the mobile base will stop to avoid further damage.</p>
+</div>
+<div class="section" id="encoder">
+<h2>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">¶</a></h2>
+<p>The encoder of the four motors on mobile base is used to calculate the odom information,
+that is the 2D pose of MOMA.</p>
+</div>
+<div class="section" id="lidar">
+<h2>Lidar<a class="headerlink" href="#lidar" title="Permalink to this headline">¶</a></h2>
+<p>MOMA is equipped with two URG-04, the range of which is 5600mmx240 degree. One is in the left-front side
+of MOMA, and the other is right-back.
+You can go to this <a class="reference external" href="https://www.hokuyo-aut.jp/search/single.php?serial=166">website</a> to know more about them.</p>
+<div class="align-centered figure align-center">
+<img alt="_images/left_front_lidar.jpg" src="_images/left_front_lidar.jpg" />
+</div>
+<div class="align-centered figure align-center">
+<img alt="_images/right_back_lidar.jpg" src="_images/right_back_lidar.jpg" />
+</div>
+</div>
+<div class="section" id="kinect-v2">
+<h2>Kinect V2<a class="headerlink" href="#kinect-v2" title="Permalink to this headline">¶</a></h2>
+<p>There is a very famous RGB-D camera, <a class="reference external" href="https://www.xbox.com/en-US/xbox-one/accessories/kinect">Kinect V2</a> on MOMA’s lifter.
+See <a class="reference internal" href="api_overview.html#kinect-v2-interface"><span class="std std-ref">Kinect V2 Interface</span></a> to know how to get data from it.</p>
+</div>
+<div class="section" id="realsense-sr300">
+<h2>Realsense SR300<a class="headerlink" href="#realsense-sr300" title="Permalink to this headline">¶</a></h2>
+<p>MOMA’s hand is mounted with a Realsense SR300. This is an indoor-used RGB-D camera,
+with range from 0.2m to 1.5m. You can refer to this <a class="reference external" href="https://arxiv.org/abs/1705.05548">article</a>
+to know more about Intel Realsense product.</p>
+<p>If the Realsense SR300 and the Kinect V2 are all turned on and watching the same objects,
+you will find the performance of Realsense SR300 is dramatically decreased.
+You can go to <a class="reference external" href="https://github.com/IntelRealSense/librealsense/blob/v1.12.1/doc/camera_specs.md#f200--sr300-notes">this website</a>
+to know about the reason.</p>
+</div>
+<div class="section" id="proximity-sensor">
+<h2>Proximity Sensor<a class="headerlink" href="#proximity-sensor" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.vishay.com/docs/83395/vcnl4000_demo_kit.pdf">proximity sensors</a> on MOMA’s hand measure the distance to objects in the front.
+The maximum range is about 5cm.</p>
+</div>
+<div class="section" id="angle-sensor">
+<h2>Angle Sensor<a class="headerlink" href="#angle-sensor" title="Permalink to this headline">¶</a></h2>
+<p>The angle sensor on MOMA’s hand measure the position of each joints on fingers.
+Check <a class="reference internal" href="api_overview.html#hand-interface"><span class="std std-ref">Hand Interface (moma_hand)</span></a> to know how to get the data of angle sensors.</p>
+</div>
+<div class="section" id="microphone">
+<h2>Microphone<a class="headerlink" href="#microphone" title="Permalink to this headline">¶</a></h2>
+<p>The microphone on MOMA is a <a class="reference external" href="http://www.mxlmics.com/microphones/web-conferencing/AC-404/">MXL AC-404</a>.
+This is a also the one <a class="reference external" href="http://wiki.ros.org/Robots/PR2/HardwareMods#Microphones_.28ears.29_for_the_PR2_head">that was used on PR2</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Dorabot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

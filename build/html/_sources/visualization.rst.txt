@@ -1,0 +1,19 @@
+Visualization Turtorial
+========================
+
+You can visualize MOMA on it's internal computer with RVIZ:
+::
+
+  $ roslaunch moma_bringup moma_visualization
+
+.. figure:: _static/visualization/visualization.png
+   :align: center
+   :figclass: align-centered
+
+If you want to see the visualization on a remote computer, 
+you can follow the :ref:`network` section to config your computer.
+
+However, please note that it is very hard to transmit camera data from one computer to another. 
+If you really need to monitor what the cameras on MOMA are seeing on a remote computer, 
+it is recommended to use `NoMachine <https://www.nomachine.com/>`_ in a LAN or 
+`Teamviewer <https://www.teamviewer.com/en/>`_.
